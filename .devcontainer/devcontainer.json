@@ -12,7 +12,7 @@
 	// mount geminicli config
 	"mounts": [
     "source=${localEnv:USERPROFILE}\\.gemini,target=/home/node/.gemini,type=bind,consistency=cached",
-    "source=openclaw-sandbox-data,target=/home/node/.openclaw,type=volume"
+    "source=deskclaw-data,target=/home/node/.openclaw,type=volume"
   ],	
 
   	// expose OpenClaw default port getaway
