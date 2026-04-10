@@ -1,4 +1,4 @@
-# Multi-Channel Customer Service Bot - Pitch Proposal
+# DeskClaw - Pitch Proposal
 
 ## 1. Executive Summary
 *Brief overview of the problem being solved and the proposed AI solution.*
@@ -6,7 +6,7 @@
 ## 2. The Problem
 *Why current customer service methods are failing or inefficient.*
 
-## 3. The Solution (OpenClaw Powered)
+## 3. The Solution (Powered by OpenClaw)
 *How a unified AI agent handling WhatsApp, Instagram, and Gmail solves the problem.*
 
 ## 4. Key Features & Business Value

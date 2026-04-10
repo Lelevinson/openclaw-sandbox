@@ -5,7 +5,7 @@ do `pkill -9 -f openclaw`
 do `code /home/node/.openclaw/workspace`s
 
 ### reset openclaw (full)
-`rm -rf /home/node/.openclaw/* /home/node/.openclaw/.[!.]*`
+do `openclaw reset` then `rm -rf /home/node/.openclaw/* /home/node/.openclaw/.[!.]*`
 
 ### openclaw gateway service
 select **NO**

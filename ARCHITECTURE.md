@@ -1,4 +1,4 @@
-# Customer Service Bot - Architecture Blueprint
+# DeskClaw - Architecture Blueprint
 
 ## 1. The Stack
 *   **Infrastructure:** Docker Dev Container (Windows WSL2)
