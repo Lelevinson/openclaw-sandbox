@@ -27,10 +27,11 @@ Small and medium-sized D2C businesses waste hours manually answering repetitive 
 *   Zero-shot classification for sentiment analysis.
 
 **System Workflow:**
-1.  **Frustration Safety Net:** Every incoming message undergoes sentiment analysis. If classified as 'Negative/Angry', the system halts the AI response and triggers an `escalate_to_human` function.
-2.  **Policy Oracle (RAG):** If the user asks a policy question, the system searches the company's markdown documents, retrieves relevant text chunks, and injects them into the LLM's context window to generate an accurate answer.
-3.  **Personalized Matchmaker & Negotiator (Tool Calling):** If the user is shopping, the LLM extracts their requirements and triggers external Python/Node.js functions to query a product database or generate unique promo codes.
-4.  **Unboxing Concierge:** Deep-linked QR codes on physical packages initialize stateful, step-by-step setup conversations.
+1.  **Policy Oracle (RAG):** The system searches local markdown documents (shipping, returns) to provide instant, accurate answers to policy inquiries, injecting relevant text directly into the LLM's context.
+2.  **Personalized Matchmaker (Database Query):** For shopping inquiries, the LLM extracts user requirements (e.g., "quiet keyboard") and triggers external functions to query a structured product database, returning personalized recommendations.
+3.  **Unboxing Concierge (Deep Linking):** Physical product QR codes contain deep links that initialize a stateful, context-aware chat session, allowing the AI to guide users through complex product setups step-by-step.
+4.  **Dynamic Negotiator (Tool Calling):** To close hesitant buyers, the AI dynamically negotiates within pre-defined margin boundaries and triggers a tool to generate unique, one-time e-commerce promo codes.
+5.  **Frustration Safety Net (Sentiment Routing):** Operating continuously, a zero-shot sentiment classifier monitors the conversation. If negative emotion is detected, the AI halts and automatically escalates the thread to a human manager.
 
 ## 6. Dataset / Data Source
 *   **Dataset Name:** DeskClaw D2C Synthetic Knowledge Base
