@@ -2,21 +2,22 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
 	"name": "Node.js & TypeScript",
-	
+
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:4-24-bookworm",
 
 	// Load env to linux
 	"runArgs": ["--env-file", ".env"],
 
-	// mount geminicli config
+	// mount CLI configs and OpenClaw data
 	"mounts": [
-    "source=${localEnv:USERPROFILE}\\.gemini,target=/home/node/.gemini,type=bind,consistency=cached",
-    "source=deskclaw-data,target=/home/node/.openclaw,type=volume"
-  ],	
+		"source=deskclaw-gemini,target=/home/node/.gemini,type=volume",
+		"source=deskclaw-codex,target=/home/node/.codex,type=volume",
+		"source=deskclaw-data,target=/home/node/.openclaw,type=volume"
+	],
 
-  	// expose OpenClaw default port getaway
-  	"forwardPorts": [18789],
+	// expose OpenClaw default port getaway
+	"forwardPorts": [18789],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -25,10 +26,16 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install -g @github/copilot @google/gemini-cli openclaw@latest",
+	"postCreateCommand": "sudo mkdir -p /home/node/.codex/sessions /home/node/.gemini && sudo chown -R node:node /home/node/.codex /home/node/.gemini && npm install -g @github/copilot @google/gemini-cli @openai/codex openclaw@latest",
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"openai.chatgpt"
+			]
+		}
+	},
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "node"
