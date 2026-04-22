@@ -6,8 +6,10 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:4-24-bookworm",
 
-	// Load env to linux
-	"runArgs": ["--env-file", ".env"],
+	// Load env to linux.
+	// `seccomp=unconfined` is needed so namespace-based tools like bubblewrap
+	// can create their own sandbox inside the devcontainer.
+	"runArgs": ["--env-file", ".env", "--security-opt", "seccomp=unconfined"],
 
 	// mount CLI configs and OpenClaw data
 	"mounts": [
