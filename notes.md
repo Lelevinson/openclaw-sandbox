@@ -2,7 +2,7 @@
 do `pkill -9 -f openclaw`
 
 ### open openclaw workspace dir in vscode
-do `code /home/node/.openclaw/workspace`s
+do `code /home/node/.openclaw/workspace`
 
 ### reset openclaw (full)
 do `openclaw reset` then `rm -rf /home/node/.openclaw/* /home/node/.openclaw/.[!.]*`
