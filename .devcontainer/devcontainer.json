@@ -1,12 +1,12 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-	"name": "Node.js & TypeScript",
+	"name": "DeskClaw Dev",
 
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:4-24-bookworm",
 
-	// Load env to linux.
+	// Load the manually-created local .env into Linux.
 	// `seccomp=unconfined` is needed so namespace-based tools like bubblewrap
 	// can create their own sandbox inside the devcontainer.
 	"runArgs": ["--env-file", ".env", "--security-opt", "seccomp=unconfined"],
@@ -18,8 +18,14 @@
 		"source=deskclaw-data,target=/home/node/.openclaw,type=volume"
 	],
 
-	// expose OpenClaw default port getaway
+	// expose OpenClaw default gateway port
 	"forwardPorts": [18789],
+
+	"portsAttributes": {
+		"18789": {
+			"label": "OpenClaw Gateway"
+		}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -28,14 +34,12 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y bubblewrap && sudo mkdir -p /home/node/.codex/sessions /home/node/.gemini && sudo chown -R node:node /home/node/.codex /home/node/.gemini && npm install -g @github/copilot @google/gemini-cli @openai/codex openclaw@latest",
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y bubblewrap && sudo mkdir -p /home/node/.codex/sessions /home/node/.gemini /home/node/.openclaw && sudo chown -R node:node /home/node/.codex /home/node/.gemini /home/node/.openclaw && npm install -g @google/gemini-cli @openai/codex openclaw@latest",
 
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
-			"extensions": [
-				"openai.chatgpt"
-			]
+			"extensions": ["openai.chatgpt"]
 		}
 	},
 

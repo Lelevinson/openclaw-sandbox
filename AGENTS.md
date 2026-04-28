@@ -14,7 +14,7 @@ What exists now:
 - A current architecture blueprint and contributor guide
 - OpenClaw learning notes and local operational reminders
 - A devcontainer configuration for a Node.js-based local development environment
-- A local `.env` file used by the devcontainer
+- A local `.env` file used by the devcontainer, with `.env.example` as the committed template
 
 What does not exist yet:
 
@@ -108,6 +108,7 @@ This layout is **planned**, not present yet. If the team later prefers SQLite in
 
 Important files and folders currently in the repo:
 
+- [`README.md`](/workspaces/clawdesk/README.md): public project introduction and teammate development setup
 - [`.devcontainer/devcontainer.json`](/workspaces/clawdesk/.devcontainer/devcontainer.json): local development container definition
 - [`ARCHITECTURE.md`](/workspaces/clawdesk/ARCHITECTURE.md): short architecture snapshot
 - [`PROPOSAL.md`](/workspaces/clawdesk/PROPOSAL.md): proposal narrative with objectives and methodology
@@ -119,17 +120,18 @@ Important files and folders currently in the repo:
 
 The current dev environment is defined in [`.devcontainer/devcontainer.json`](/workspaces/clawdesk/.devcontainer/devcontainer.json):
 
+- Display name: `DeskClaw Dev`
 - Base image: Microsoft Node.js and TypeScript devcontainer (`4-24-bookworm`)
 - Remote user: `node`
-- Local `.env` is loaded into the container through `runArgs`
+- Local `.env` is loaded into the container through `runArgs`; copy `.env.example` to `.env` manually before opening the container
+- `.env.example` includes `OLLAMA_HOST=http://host.docker.internal:11434` for native Ollama on Windows/macOS
 - Persistent volumes mount to:
   - `/home/node/.gemini`
   - `/home/node/.codex`
   - `/home/node/.openclaw`
-- Port `18789` is forwarded for the OpenClaw gateway
+- Port `18789` is forwarded and labeled for the OpenClaw gateway
 - `postCreateCommand` installs:
   - `bubblewrap`
-  - `@github/copilot`
   - `@google/gemini-cli`
   - `@openai/codex`
   - `openclaw@latest`
@@ -137,6 +139,7 @@ The current dev environment is defined in [`.devcontainer/devcontainer.json`](/w
 ## Secrets And Local State
 
 - `.env` is intentionally gitignored and should stay local
+- `.env.example` is intentionally non-secret and should be copied to `.env` on each developer machine
 - Do not copy secrets into markdown docs, scripts, or committed config
 - If `.env` contains live credentials, treat them as sensitive developer-only state
 - OpenClaw runtime state is expected to live in the mounted `/home/node/.openclaw` volume, not in the repo root

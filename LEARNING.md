@@ -18,6 +18,7 @@
 *   **The "Local Install" Deadlock:** Do not run `npm install openclaw` in the shared workspace. The Windows-to-Linux bridge chokes on file I/O.
 *   **The Fix:** Install globally in the container: `npm install -g openclaw@latest`.
 *   **Bubblewrap Sandbox Trap:** Installing `bubblewrap` is not enough by itself. The devcontainer also needs `--security-opt seccomp=unconfined`, or namespace-based sandboxing will still fail with "No permissions to create new namespace".
+*   **Cross-Platform `.env` Setup:** Do not rely on `initializeCommand` to create `.env`; it runs on the host OS, so shell commands differ across Windows and macOS. Copy `.env.example` to `.env` manually before opening the devcontainer.
 *   **The Zombie Process:** If the gateway refuses to stop and blocks port `18789`, kill it manually: `pkill -9 -f openclaw`.
 *   **Local Models (Ollama):** Install Ollama natively on Windows, not in Docker. Connect OpenClaw to it using `http://host.docker.internal:11434`.
 

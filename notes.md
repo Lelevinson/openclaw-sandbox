@@ -1,3 +1,6 @@
+### first-time devcontainer setup
+copy `.env.example` to `.env` manually before opening or rebuilding the devcontainer
+
 ### shutdown timed out error
 do `pkill -9 -f openclaw`
 
