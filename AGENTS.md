@@ -159,6 +159,18 @@ The current dev environment is defined in [`.devcontainer/devcontainer.json`](/w
 - Do not commit secrets, generated auth files, or personal OpenClaw workspace state
 - Prefer simulated or local test flows before attempting real channel integrations
 
+## Commit Style
+
+Use the repository's existing short prefix style for commit subjects:
+
+```text
+docs: update teammate setup notes
+chore: enable bubblewrap sandbox in devcontainer
+update: container config and proposal script
+```
+
+Commit subjects should be concise, lowercase after the prefix, and written as `<type>: <summary>`. Prefer `docs:` for documentation-only changes, `chore:` for setup/tooling maintenance, and `update:` for broader mixed changes. Add a short commit body when the reason or scope is not obvious from the subject.
+
 ## Scope Guardrails
 
 To stay aligned with the current proposal presented to the teacher:
