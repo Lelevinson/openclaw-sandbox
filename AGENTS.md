@@ -150,6 +150,7 @@ The current dev environment is defined in [`.devcontainer/devcontainer.json`](/w
 - Treat [`PROPOSAL.md`](/workspaces/clawdesk/PROPOSAL.md) and [`ARCHITECTURE.md`](/workspaces/clawdesk/ARCHITECTURE.md) as the current scope lock unless the team decides to revise the project direction
 - In a new chat, read [`AGENTS.md`](/workspaces/clawdesk/AGENTS.md), [`PROPOSAL.md`](/workspaces/clawdesk/PROPOSAL.md), and [`ARCHITECTURE.md`](/workspaces/clawdesk/ARCHITECTURE.md) before making scope assumptions
 - On every new user prompt or task, re-check whether any kept context file needs an update before finishing the work
+- Use the project-level Context7 MCP server when current library, framework, setup, configuration, or API documentation would reduce guesswork; resolve the relevant library or tool docs through Context7 instead of relying only on memory.
 - Preserve the project's local-first and privacy-first assumptions unless the user approves a change in direction
 - Use the current root markdown files as the build baseline and keep them synchronized with implementation changes
 - Keep docs synchronized with implementation changes; this repo currently depends heavily on documentation accuracy

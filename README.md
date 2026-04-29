@@ -59,6 +59,25 @@ The devcontainer:
 
 OpenClaw is intentionally installed globally inside the container instead of inside the shared repository folder. This avoids slow or fragile file operations across Windows/macOS host mounts.
 
+### Context7 MCP For Codex
+
+Use a local, project-scoped Codex MCP config at `.codex/config.toml` for Context7. The `.codex/` folder is intentionally ignored so local Codex state and API keys do not get committed.
+
+Create or update the local config with:
+
+```toml
+[mcp_servers.context7]
+url = "https://mcp.context7.com/mcp"
+```
+
+Codex loads project-scoped config only after the project is trusted. After opening the devcontainer, restart Codex from the repository root and verify with:
+
+```bash
+codex mcp list
+```
+
+For higher Context7 rate limits, create a Context7 API key, add it to your local `.env` as `CONTEXT7_API_KEY=...`, then use `env_http_headers` in your local `.codex/config.toml`. Do not commit real API keys.
+
 ## Useful OpenClaw Commands
 
 Inside the devcontainer:
